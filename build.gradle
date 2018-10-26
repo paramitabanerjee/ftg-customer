@@ -17,5 +17,8 @@ apply plugin: 'io.spring.dependency-management'
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
     //compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-mongodb
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.0.6.RELEASE'
+
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
