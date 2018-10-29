@@ -6,6 +6,8 @@ import food.togo.customer.request.CustomerRequest;
 import food.togo.customer.response.CustomerResponse;
 import food.togo.customer.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -26,19 +28,34 @@ public class CustomerEndpoint {
 
     @PostMapping
     @ResponseBody
-    public CustomerEntity createCustomer(@RequestBody CustomerEntity customerEntity) {
+    public ResponseEntity<?> createCustomer(@RequestBody CustomerEntity customerEntity) {
         CustomerEntity entity = customerService.createCustomer(customerEntity);
+        return new ResponseEntity(entity, HttpStatus.CREATED);
+    }
 
-        return entity;
+    @PutMapping
+    @ResponseBody
+    public ResponseEntity<?>  updateCustomer(@RequestBody CustomerEntity customerEntity) {
+        CustomerEntity entity = customerService.updateCustomer(customerEntity);
+
+        return new ResponseEntity(entity, HttpStatus.OK);
+    }
+
+    @DeleteMapping(value="/{customerId}")
+    @ResponseBody
+    public ResponseEntity<?> deleteCustomer(Long customerId) {
+        customerService.deleteCustomer(customerId);
+
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 
 
     @GetMapping(value = "/{customerId}")
     @ResponseBody
-    public CustomerResponse getCustomer(String customerId) {
-        CustomerResponse customerResponse = customerService.getCustomer(customerId);
+    public ResponseEntity<?> getCustomer(Long customerId) {
+        CustomerEntity entity = customerService.getCustomer(customerId);
 
-        return customerResponse;
+        return new ResponseEntity(entity, HttpStatus.OK);
     }
 
 }
