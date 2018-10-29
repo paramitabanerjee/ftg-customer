@@ -1,9 +1,10 @@
-package food.togo.customer.dao.entities;
+package food.togo.customer.mongodao.entities;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Customers {
 
     private String firstname;

@@ -1,7 +1,7 @@
-package food.togo.customer.dao;
+package food.togo.customer.mongodao;
 
-import food.togo.customer.dao.entities.Customers;
-import food.togo.customer.dao.repositories.CustomerRepository;
+import food.togo.customer.mongodao.entities.Customers;
+import food.togo.customer.mongodao.repositories.CustomerMongoRepository;
 import food.togo.customer.request.CustomerRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,16 +9,16 @@ import org.springframework.stereotype.Component;
 import java.util.Optional;
 
 @Component
-public class CustomerDao {
+public class CustomerMongoDao {
 
     @Autowired
-    CustomerRepository customerRepository;
+    CustomerMongoRepository customerMongoRepository;
 
     public Customers createCustomer(CustomerRequest customerRequest) {
 
         Customers customer = new Customers(customerRequest.getFirstName(), customerRequest.getLastName());
 
-        Customers savedCustomers = customerRepository.save(customer);
+        Customers savedCustomers = customerMongoRepository.save(customer);
 
         return savedCustomers;
     }
