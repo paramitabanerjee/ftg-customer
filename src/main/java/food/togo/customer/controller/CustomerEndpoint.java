@@ -58,13 +58,13 @@ public class CustomerEndpoint {
         return new ResponseEntity(entity, HttpStatus.OK);
     }
 
-    @PostMapping(value="/paymentInfo/{customerId}")
+    /*@PostMapping(value="/paymentInfo/{customerId}")
     @ResponseBody
-    public ResponseEntity<?> addPaymentInfo(@RequestBody CustomerEntity customerEntity) {
+    public ResponseEntity<?> addPaymentInfo(@RequestBody CustomerPaymentInfo paymentInfo) {
         //CustomerEntity entity = customerService.createCustomer(customerEntity);
         //return new ResponseEntity(entity, HttpStatus.CREATED);
         return new ResponseEntity(HttpStatus.CREATED);
-    }
+    }*/
 
 
 }

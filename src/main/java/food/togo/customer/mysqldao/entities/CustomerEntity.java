@@ -28,6 +28,7 @@ public class CustomerEntity implements Serializable {
     private String state;
     private Integer zip;
     private Integer status;
+    private String stripeCustomerID;
 
 
 }

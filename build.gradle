@@ -23,4 +23,7 @@ dependencies {
     compile group: 'org.projectlombok', name: 'lombok', version: '1.18.2'
     // https://mvnrepository.com/artifact/mysql/mysql-connector-java
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.13'
+    // https://mvnrepository.com/artifact/com.stripe/stripe-java
+    compile group: 'com.stripe', name: 'stripe-java', version: '7.1.0'
+
 }
