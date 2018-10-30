@@ -14,6 +14,7 @@ CREATE TABLE `Customer` (
   `PIN` int(11) DEFAULT NULL,
   `Password` varchar(45) DEFAULT NULL,
   `Status` int(11) DEFAULT NULL,
+  `StripeCustomerID` varchar(45) DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   `LastUpdated` datetime DEFAULT NULL,
   PRIMARY KEY (`CustomerID`),
@@ -85,7 +86,7 @@ CREATE TABLE `PaymentHistory` (
   `Created` datetime DEFAULT NULL,
   PRIMARY KEY (`PaymentID`)
 ) ;
-CREATE TABLE `PaymentMethods` (
+/* CREATE TABLE `PaymentMethods` (
   `ID` int(11) NOT NULL,
   `CustomerID` int(11) DEFAULT NULL,
   `PaymentTypeID` tinyint(4) DEFAULT NULL,
@@ -97,7 +98,7 @@ CREATE TABLE `PaymentMethods` (
   PRIMARY KEY (`ID`),
   KEY `CustID_FK_idx` (`CustomerID`),
   CONSTRAINT `CustID_FK` FOREIGN KEY (`CustomerID`) REFERENCES `customer` (`customerid`) ON DELETE CASCADE
-);
+);*/
 CREATE TABLE `PaymentStatusType` (
   `PaymentStatusTypeId` tinyint(4) NOT NULL,
   `PaymentStatus` varchar(15) DEFAULT NULL,
