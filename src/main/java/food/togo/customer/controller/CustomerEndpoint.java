@@ -52,19 +52,12 @@ public class CustomerEndpoint {
 
     @GetMapping(value = "/{customerId}")
     @ResponseBody
-    public ResponseEntity<?> getCustomer(Long customerId) {
+    public ResponseEntity<?> getCustomer(@PathVariable("customerId") Long customerId) {
+        System.out.println("CustomerId = "+customerId);
         CustomerEntity entity = customerService.getCustomer(customerId);
 
         return new ResponseEntity(entity, HttpStatus.OK);
     }
-
-    /*@PostMapping(value="/paymentInfo/{customerId}")
-    @ResponseBody
-    public ResponseEntity<?> addPaymentInfo(@RequestBody CustomerPaymentInfo paymentInfo) {
-        //CustomerEntity entity = customerService.createCustomer(customerEntity);
-        //return new ResponseEntity(entity, HttpStatus.CREATED);
-        return new ResponseEntity(HttpStatus.CREATED);
-    }*/
 
 
 }
