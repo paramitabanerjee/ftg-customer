@@ -78,24 +78,20 @@ CREATE TABLE `PaymentHistory` (
   `PaymentID` bigint(20) NOT NULL AUTO_INCREMENT,
   `OrderID` bigint(20) DEFAULT NULL,
   `Amount` decimal(10,0) DEFAULT NULL,
+  `Refund` decimal(10,0) DEFAULT NULL,
   `Currency` char(3) DEFAULT NULL,
   `CustomerID` int(11) DEFAULT NULL,
-  `PaymentMethodID` int(11) DEFAULT NULL,
+  `StripeChargeID` int(11) DEFAULT NULL,
   `PaymentStatus` tinyint(4) DEFAULT NULL,
   `PaymentError` varchar(255) DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
   PRIMARY KEY (`PaymentID`)
 ) ;
+
 CREATE TABLE `PaymentStatusType` (
   `PaymentStatusTypeId` tinyint(4) NOT NULL,
   `PaymentStatus` varchar(15) DEFAULT NULL,
   PRIMARY KEY (`PaymentStatusTypeId`)
-);
-CREATE TABLE `PaymentType` (
-  `PaymentTypeId` tinyint(4) NOT NULL,
-  `PaymentType` varchar(15) NOT NULL,
-  PRIMARY KEY (`PaymentTypeId`),
-  UNIQUE KEY `PaymentTypeId_UNIQUE` (`PaymentTypeId`)
 );
 CREATE TABLE `Roles` (
   `RoleID` int(11) NOT NULL,
