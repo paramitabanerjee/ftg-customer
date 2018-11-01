@@ -86,19 +86,6 @@ CREATE TABLE `PaymentHistory` (
   `Created` datetime DEFAULT NULL,
   PRIMARY KEY (`PaymentID`)
 ) ;
-/* CREATE TABLE `PaymentMethods` (
-  `ID` int(11) NOT NULL,
-  `CustomerID` int(11) DEFAULT NULL,
-  `PaymentTypeID` tinyint(4) DEFAULT NULL,
-  `CardType` varchar(15) DEFAULT NULL,
-  `CardNumber` int(11) DEFAULT NULL,
-  `expiry` varchar(5) DEFAULT NULL,
-  `CVV` int(11) DEFAULT NULL,
-  `IsPrimary` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `CustID_FK_idx` (`CustomerID`),
-  CONSTRAINT `CustID_FK` FOREIGN KEY (`CustomerID`) REFERENCES `customer` (`customerid`) ON DELETE CASCADE
-);*/
 CREATE TABLE `PaymentStatusType` (
   `PaymentStatusTypeId` tinyint(4) NOT NULL,
   `PaymentStatus` varchar(15) DEFAULT NULL,

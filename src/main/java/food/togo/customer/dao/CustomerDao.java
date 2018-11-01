@@ -1,8 +1,8 @@
 package food.togo.customer.dao;
 
-import food.togo.customer.mongodao.entities.Customers;
+
 import food.togo.customer.mysqldao.entities.CustomerEntity;
-import food.togo.customer.request.CustomerRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,14 +17,14 @@ public class CustomerDao {
     @Autowired CustomerRepository customerRepository;
     @Autowired CustomerMongoRepository customerMongoRepository;
 
-    public Customers createCustomer(CustomerRequest customerRequest) {
+    /*public Customers createCustomer(CustomerRequest customerRequest) {
 
         Customers customer = new Customers(customerRequest.getFirstName(), customerRequest.getLastName());
 
         Customers savedCustomers = customerMongoRepository.save(customer);
 
         return savedCustomers;
-    }
+    }*/
 
     public CustomerEntity getCustomer(Long customerId) {
 
