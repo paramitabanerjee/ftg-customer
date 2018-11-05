@@ -1,4 +1,5 @@
 
+Drop table `Customer`;
 
 CREATE TABLE `Customer` (
   `CustomerID` int(11) NOT NULL AUTO_INCREMENT,
@@ -13,6 +14,8 @@ CREATE TABLE `Customer` (
   `Zip` int(11) NOT NULL,
   `PIN` int(11) DEFAULT NULL,
   `Password` varchar(45) DEFAULT NULL,
+  `Salt` varchar(80) DEFAULT NULL,
+  `IV` varchar(80) DEFAULT NULL,
   `Status` int(11) DEFAULT NULL,
   `StripeCustomerID` varchar(45) DEFAULT NULL,
   `Created` datetime DEFAULT NULL,
@@ -22,6 +25,19 @@ CREATE TABLE `Customer` (
   UNIQUE KEY `Phone_UNIQUE` (`Phone`),
   KEY `ZIP_Index` (`Zip`)
 );
+
+
+
+CREATE table `API_KEYS` (
+ `KEYNAME` varchar(30) NOT NULL,
+ `KEYVALUE` varchar(255) NOT NULL,
+ `SALT` varchar(80) DEFAULT NULL
+);
+
+ALTER TABLE `API_KEYS`
+ADD UNIQUE INDEX `KEYNAME_UNIQUE` (`KEYNAME` ASC);
+;
+Drop table `Listings`;
 
 CREATE TABLE `Listings` (
   `ListingID` int(11) NOT NULL,

@@ -1,10 +1,11 @@
 package food.togo.customer.service;
 
 import food.togo.customer.dao.CustomerDao;
-import food.togo.customer.mongodao.entities.Customers;
 import food.togo.customer.mysqldao.entities.CustomerEntity;
+import food.togo.platform.HashUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import food.togo.platform.EncryptionUtil;
 
 @Service
 public class CustomerService {
@@ -20,7 +21,16 @@ public class CustomerService {
         return customerResponse;
     }*/
 
-    public CustomerEntity createCustomer(CustomerEntity customerEntity) {
+    public CustomerEntity createCustomer(CustomerEntity customerEntity) throws Exception {
+
+        String password = customerEntity.getPassword();
+
+        String salt = EncryptionUtil.getSalt();
+        customerEntity.setSalt(salt);
+
+        String passwordHash = HashUtil.hashPassword(password, salt.getBytes());
+
+        customerEntity.setPassword(passwordHash);
         CustomerEntity entity = customerDao.createCustomer(customerEntity);
 
         return entity;
