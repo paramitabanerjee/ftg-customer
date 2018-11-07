@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import food.togo.platform.EncryptionUtil;
 
+import java.util.Optional;
+
 @Service
 public class CustomerService {
 
@@ -41,6 +43,11 @@ public class CustomerService {
         CustomerEntity customer = customerDao.getCustomer(customerId);
 
         return customer;
+    }
+
+    public Optional<CustomerEntity> getCustomerByEmail(String email) {
+
+        return customerDao.getCustomerByEmail(email);
     }
 
     public CustomerEntity updateCustomer(CustomerEntity customerEntity) {

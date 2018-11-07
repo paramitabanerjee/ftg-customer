@@ -49,4 +49,8 @@ public class CustomerDao {
 
 
     }
+
+    public Optional<CustomerEntity> getCustomerByEmail(String email) {
+        return customerRepository.findByEmail(email);
+    }
 }

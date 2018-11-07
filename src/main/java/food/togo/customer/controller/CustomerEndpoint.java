@@ -27,7 +27,13 @@ public class CustomerEndpoint {
     @PostMapping
     @ResponseBody
     public ResponseEntity<?> createCustomer(@RequestBody CustomerEntity customerEntity) {
-        CustomerEntity entity = customerService.createCustomer(customerEntity);
+
+        CustomerEntity entity = null;
+        try {
+            entity = customerService.createCustomer(customerEntity);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
         return new ResponseEntity(entity, HttpStatus.CREATED);
     }
 
