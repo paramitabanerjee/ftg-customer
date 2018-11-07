@@ -14,19 +14,17 @@ CREATE TABLE `Customer` (
   `Zip` int(11) NOT NULL,
   `PIN` int(11) DEFAULT NULL,
   `Password` varchar(45) DEFAULT NULL,
-  `Salt` varchar(80) DEFAULT NULL,
-  `IV` varchar(80) DEFAULT NULL,
+  `Salt` blob DEFAULT NULL,
+  `IV` blob DEFAULT NULL,
   `Status` int(11) DEFAULT NULL,
   `StripeCustomerID` varchar(45) DEFAULT NULL,
-  `Created` datetime DEFAULT NULL,
-  `LastUpdated` datetime DEFAULT NULL,
+  `Created` datetime DEFAULT now(),
+  `LastUpdated` datetime DEFAULT now(),
   PRIMARY KEY (`CustomerID`),
   UNIQUE KEY `Email_UNIQUE` (`Email`),
   UNIQUE KEY `Phone_UNIQUE` (`Phone`),
   KEY `ZIP_Index` (`Zip`)
 );
-
-
 
 CREATE table `API_KEYS` (
  `KEYNAME` varchar(30) NOT NULL,

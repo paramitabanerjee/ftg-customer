@@ -28,7 +28,7 @@ public class AuthenticationService {
             throw new Exception("CUSTOMER_NOT_FOUND");
         }
 
-        String salt = fetchedCustomer.getSalt();
+        byte[] salt = fetchedCustomer.getSalt();
         String hashedPassword = HashUtil.hashPassword(password, salt);
         if(fetchedCustomer.getPassword()!=null && fetchedCustomer.getPassword().equals(hashedPassword)) {
            return true;

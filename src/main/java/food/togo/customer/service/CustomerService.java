@@ -27,10 +27,10 @@ public class CustomerService {
 
         String password = customerEntity.getPassword();
 
-        String salt = EncryptionUtil.getSalt();
+        byte[] salt = EncryptionUtil.getSaltBytes();
         customerEntity.setSalt(salt);
 
-        String passwordHash = HashUtil.hashPassword(password, salt.getBytes());
+        String passwordHash = HashUtil.hashPassword(password, salt);
 
         customerEntity.setPassword(passwordHash);
         CustomerEntity entity = customerDao.createCustomer(customerEntity);
